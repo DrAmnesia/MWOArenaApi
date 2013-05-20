@@ -14,24 +14,24 @@
         <div id="MWOArenaMsgBox"></div>
         <form id="duel-form" class="interface formAddSingle">
             <div class="control-group">
-                <label>Division:</label><br />
-                <input type="text" name="DivisionName" id="Text3" class="forminput" placeholder="Your Name" value="Medium" />
+                <label>Division:</label> 
+                <select name="DivisionName" id="DivisionName" class="division-list"> </select>
             </div>
             <div class="control-group">
-                <label>WinnerName:</label><br />
-                <input type="text" name="WinnerName" id="Text5" class="forminput" placeholder="Your Email Address" value="DrAmnesia" />
+                <label>WinnerName:</label> 
+                <select name="WinnerName" id="WinnerName" class="pilot-list winner"> </select>
             </div>
             <div class="control-group">
-                <label>WinnerChassisName:</label><br />
-                <input type="text" name="WinnerChassisName" id="Text14" class="forminput" placeholder="Your Email Address" value="HBK-4P" />
+                <label>WinnerChassisName:</label> 
+                  <select  name="WinnerChassisName" id="WinnerChassisName" class="chassis-list winner"> </select>
             </div>
             <div class="control-group">
-                <label>LoserName:</label><br />
-                <input type="text" name="LoserName" id="Text4" class="forminput" placeholder="Your Email Address" value="Albeleo" />
+                <label>LoserName:</label> 
+                <select  name="LoserName" id="LoserName" class="pilot-list loser"> </select>
             </div>
             <div class="control-group">
-                <label>LoserChassisName:</label><br />
-                <input type="text" name="LoserChassisName" id="Text15" class="forminput" placeholder="Your Email Address" value="HBK-4SP" />
+                <label>LoserChassisName:</label> 
+                   <select  name="LoserChassisName" id="LoserChassisName" class="chassis-list loser"> </select>
             </div>
          
         
@@ -43,5 +43,5 @@
     </div>
     <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
 
-    <script type="text/javascript" src="Scripts/MWOArena.Duels.js"></script>
+    <script type="text/javascript" src="Scripts/MWOArena.Duels.local.js"></script>
 </body>

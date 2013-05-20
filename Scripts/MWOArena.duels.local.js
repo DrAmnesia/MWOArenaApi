@@ -50,7 +50,7 @@ $(document).ready(function () {
                         $("#duel-form").show();
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#duel-form').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
                     }
                 });
             },
@@ -61,7 +61,7 @@ $(document).ready(function () {
             listDuels: function () {
                 if ($("#duels-list").length == 0)
                     $("#MWOArenaDuels").append("<ul id='duels-list' class='interface list'></ul>");
-
+                $("#duels-list").empty();
                 MWOArena.clearMsgBox();
 
                 $.ajax({
@@ -81,7 +81,79 @@ $(document).ready(function () {
                         $("#duels-list").show();
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#duels-list').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                    }
+                });
+            },
+            fillPilotLists: function() {
+                $("#WinnerName").empty();
+                $("#LoserName").empty();
+                $('#WinnerName').append($('<option>', { value: "" }).text(" WinnerName "));
+                $('#LoserName').append($('<option>', { value: "" }).text(" LoserName "));
+   
+                $.ajax({
+                    url: "http://localhost/MWOArena.WebAPIs.Duels/api/pilots",
+                    type: "GET",
+                    crossDomain: true,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function(result) {
+                        $.each(result, function() {
+
+                            $('select.pilot-list').append($('<option>', { value: this.UserName }).text(this.UserName));
+                        });
+
+                    },
+                    error: function(jqXHR, tranStatus, errorThrown) {
+                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                    }
+                });
+            },
+            fillChassisLists: function () {
+                $("#WinnerChassisName").empty();
+                $("#LoserChassisName").empty();
+                $('#WinnerChassisName').append($('<option>', { value: "" }).text(" WinnerChassisName "));
+                $('#LoserChassisName').append($('<option>', { value: "" }).text(" LoserChassisName "));
+
+                $.ajax({
+                    url: "http://localhost/MWOArena.WebAPIs.Duels/api/chassis",
+                    type: "GET",
+                    crossDomain: true,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        $.each(result, function () {
+                            $('select.chassis-list')
+                                .append($('<option>', { value: this.VariantName })
+                                    .text(this.ChassisName + " - " + this.VariantName));
+                        });
+                    },
+                    error: function (jqXHR, tranStatus, errorThrown) {
+                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                    }
+                });
+            }
+       ,
+            fillDivisionLists: function () {
+                $("#DivisionName").empty();
+                $('#DivisionName').append($('<option>', { value: "" }).text(" DivisionName "));
+
+                $.ajax({
+                    url: "http://localhost/MWOArena.WebAPIs.Duels/api/division",
+                    type: "GET",
+                    crossDomain: true,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        $.each(result, function () {
+                            $('select.division-list')
+                                .append($('<option>', { value: this.DivisionName })
+                                    .text( this.DivisionName));
+                        });
+
+                    },
+                    error: function (jqXHR, tranStatus, errorThrown) {
+                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
                     }
                 });
             }
@@ -92,9 +164,9 @@ $(document).ready(function () {
     };
 
 
-
-
-
+    MWOArena.Duels.fillPilotLists();
+    MWOArena.Duels.fillChassisLists();
+    MWOArena.Duels.fillDivisionLists();
     $("#submit").click(MWOArena.Duels.addDuel);
     $("#btnDuels-Add").click(function () {
         $(".interface").hide();
