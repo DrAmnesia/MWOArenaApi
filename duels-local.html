@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<head>
+    <title>MWO:Arena WebAPIs DuelUI Demo</title>
+    <link href="Content/Site.css" rel="stylesheet">
+    <style>
+        button.add {
+            font-size: large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="MWOArenaDuels">
+        <button type="button" id="btnDuels-List">List</button>
+        <button type="button" id="btnDuels-Add" class="nav add"> + </button>
+        <br/>
+        <div id="MWOArenaMsgBox"></div>
+        <form id="duel-form" class="interface formAddSingle">
+            <div class="control-group">
+                <label>Division:</label><br />
+                <input type="text" name="DivisionName" id="Text3" class="forminput" placeholder="Your Name" value="Medium" />
+            </div>
+            <div class="control-group">
+                <label>WinnerName:</label><br />
+                <input type="text" name="WinnerName" id="Text5" class="forminput" placeholder="Your Email Address" value="DrAmnesia" />
+            </div>
+            <div class="control-group">
+                <label>WinnerChassisName:</label><br />
+                <input type="text" name="WinnerChassisName" id="Text14" class="forminput" placeholder="Your Email Address" value="HBK-4P" />
+            </div>
+            <div class="control-group">
+                <label>LoserName:</label><br />
+                <input type="text" name="LoserName" id="Text4" class="forminput" placeholder="Your Email Address" value="Albeleo" />
+            </div>
+            <div class="control-group">
+                <label>LoserChassisName:</label><br />
+                <input type="text" name="LoserChassisName" id="Text15" class="forminput" placeholder="Your Email Address" value="HBK-4SP" />
+            </div>
+         
+        
+            <button type="button" id="submit">Send</button>
+            <button type="reset" id="cancel">Cancel</button>
+
+        </form>
+        <input type="hidden" name="Build" value="0.4.0"/>
+    </div>
+    <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
+
+    <script type="text/javascript" src="Scripts/MWOArena.Duels.local.js"></script>
+</body>
