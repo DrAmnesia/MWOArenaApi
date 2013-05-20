@@ -28,7 +28,7 @@ $(document).ready(function () {
 		*/
 
         Duels: {
- 
+            
             /**
               * Submit a duel form to the MWOArenaApis
 			*/
@@ -73,7 +73,8 @@ $(document).ready(function () {
                     success: function (result) {
                         $("#duels-list").hide();
                         $.each(result, function () {
-                            var html = '<center>' + this.MatchGroupName + ' ' + this.DivisionName + '-' + this.ModeName + 's Winner:' + this.WinnerName + ' Loser:' + this.LoserName + '<center>';
+                            var validated = (this.IsValid == true ? ' checked="checked "' : '');
+                            var html = '<div class="list-row duel"><div class="MatchGroupName">' + this.MatchGroupName + '</div><div class="DivisionName">' + this.DivisionName + '</div><div class="ModeName">' + this.ModeName + '</div><div class="WinnerName">' + this.WinnerName + '</div><div class="WinnerChassisName">' + this.WinnerChassisName + '</div><div class="LoserName">' + this.LoserName + '</div><div class="LoserChassisName">' + this.LoserChassisName + '</div><div class="Notes">' + this.Notes + '</div><input type="checkbox" name="IsValid"   value="' + this.DuelPId.toString() + '" '+validated+ '/></div>';
                             $("#duels-list").append('<li>' + html + '</li>');
                         });
                         $(".interface").hide();

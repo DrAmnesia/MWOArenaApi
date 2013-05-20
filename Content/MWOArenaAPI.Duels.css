@@ -1,0 +1,12 @@
+﻿body {
+}
+        button.add {
+            font-size: large;
+            font-weight: bold;
+        }
+        #duels-list div.duel{}
+        #MWOArenaDuels {width:100%}
+        #MWOArenaDuels ul { width: 100%;}
+        #MWOArenaDuels li { width: 100%;}
+        #MWOArenaDuels div.list-row {  width: 100%;border-bottom:solid 1px #000000}
+        #MWOArenaDuels li div {display: inline-block;margin-left: 2px;margin-right: 2px;}
