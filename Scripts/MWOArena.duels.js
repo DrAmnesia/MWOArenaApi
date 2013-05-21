@@ -10,7 +10,7 @@ $(document).ready(function () {
     /**
         @namespace MWOArena client api namespace
     */
-    MWOArena = {
+    window.MWOArena = {
 
         /**
             *Clears the MWOArenaMsgBox Div
@@ -59,9 +59,19 @@ $(document).ready(function () {
             * Get a list of Duels (filtered by AuthorityName)
 			*/
             listDuels: function () {
-                if ($("#duels-list").length == 0)
-                    $("#MWOArenaDuels").append("<ul id='duels-list' class='interface list'></ul>");
+                //create the match list scaffolding
+                if ($("#duels-list").length == 0) {
+
+                    $("#MWOArenaDuels .container-title").after("<div id='duels-results' class='interface'><ul id='duels-head'  ></ul></div>");
+                    $("#duels-head").after("<div class='listframe'><ul id='duels-list'  ></ul></div>");
+                    //  $("#MWOArenaDuels").append("<ul id='duels-list' class='interface list'></ul>");
+                }
+                //clear the match list
+                $("#duels-head").empty();
                 $("#duels-list").empty();
+                // set the form action subtitle
+                $(".api-action").html("List");
+                //clear any messages order errors
                 MWOArena.clearMsgBox();
 
                 $.ajax({
@@ -71,14 +81,19 @@ $(document).ready(function () {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
-                        $("#duels-list").hide();
+                        $("#duels-results").hide();
+
+                        var html = '<div><div class="MatchGroupName colhead"> Match Set </div><div class="DivisionName colhead"> Division </div><div class="ModeName colhead"> Mode </div><div class="WinnerName colhead"> Winner </div><div class="WinnerChassisName colhead"> Chassis </div><div class="LoserName colhead"> Loser </div><div class="LoserChassisName colhead"> Chassis </div> </div>';
+                        $("#duels-head").append('<li class="colhead">' + html + '</li>');
+
                         $.each(result, function () {
                             var validated = (this.IsValid == true ? ' checked="checked "' : '');
-                            var html = '<div class="list-row duel"><div class="MatchGroupName">' + this.MatchGroupName + '</div><div class="DivisionName">' + this.DivisionName + '</div><div class="ModeName">' + this.ModeName + '</div><div class="WinnerName">' + this.WinnerName + '</div><div class="WinnerChassisName">' + this.WinnerChassisName + '</div><div class="LoserName">' + this.LoserName + '</div><div class="LoserChassisName">' + this.LoserChassisName + '</div><div class="Notes">' + this.Notes + '</div><input type="checkbox" name="IsValid"   value="' + this.DuelPId.toString() + '" ' + validated + '/></div>';
+                            html = '<div class="list-row duel"><div class="MatchGroupName">' + this.MatchGroupName + '</div><div class="DivisionName">' + this.DivisionName + '</div><div class="ModeName">' + this.ModeName + '</div><div class="WinnerName">' + this.WinnerName + '</div><div class="WinnerChassisName">' + this.WinnerChassisName + '</div><div class="LoserName">' + this.LoserName + '</div><div class="LoserChassisName">' + this.LoserChassisName + '</div> <input type="checkbox" name="IsValid" class="IsValid" value="' + this.DuelPId.toString() + '" ' + validated + '/></div>';
                             $("#duels-list").append('<li>' + html + '</li>');
                         });
                         $(".interface").hide();
-                        $("#duels-list").show();
+                        $("#duels-results").show();
+
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
                         $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
@@ -116,7 +131,7 @@ $(document).ready(function () {
                 $('#LoserChassisName').append($('<option>', { value: "" }).text(" LoserChassisName "));
 
                 $.ajax({
-                    url: "http://mwoarenaapi.azurewebsites.net/api/chassis",
+                    url: "ttp://mwoarenaapi.azurewebsites.net/api/chassis",
                     type: "GET",
                     crossDomain: true,
                     dataType: "json",
@@ -167,10 +182,15 @@ $(document).ready(function () {
     MWOArena.Duels.fillPilotLists();
     MWOArena.Duels.fillChassisLists();
     MWOArena.Duels.fillDivisionLists();
-    $("#submit").click(MWOArena.Duels.addDuel);
+    MWOArena.clearMsgBox();
+    $("#submitForm").click(MWOArena.Duels.addDuel);
     $("#btnDuels-Add").click(function () {
+        // clear the container
         $(".interface").hide();
+        // show the form
         $("#duel-form").show();
+        // set the form action subtitle
+        $(".api-action").html("Add");
     });
     $("#btnDuels-List").click(MWOArena.Duels.listDuels);
 });

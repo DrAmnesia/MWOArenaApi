@@ -1,13 +1,218 @@
 ﻿body {
 }
-        button.add {
-            font-size: large;
-            font-weight: bold;
+
+
+
+#MWOArenaDuels {
+    width: 100%;
+    position: relative;
+    min-height: 240px;
+    font-family: 'Roboto', Arial;
+}
+
+    #MWOArenaDuels legend {
+        position: absolute;
+        top: -10px;
+        right: 8px;
+    }
+
+    #MWOArenaDuels button.add {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    #MWOArenaDuels ul {
+        width: 100%;
+    }
+
+    #MWOArenaDuels li {
+        width: 100%;
+    }
+
+    #MWOArenaDuels div.list-row {
+        width: 100%;
+        border-bottom: solid 1px #000000;
+    }
+
+    #MWOArenaDuels li div {
+        display: inline-block;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+
+    #MWOArenaDuels label {
+        display: none;
+    }
+
+    #MWOArenaDuels div.container-title {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: block;
+        border: none;
+        margin: 0px;
+        color: black;
+        background-color: #ffc73d;
+        line-height: 14px;
+        font-family: 'Roboto', 'sans-serif';
+        text-align: center;
+        padding: 2px 8px;
+        font-size: 1em;
+        cursor: help;
+    }
+
+    #MWOArenaDuels div.container-footer {
+        height: 24px;
+        width: 100%;
+        position: absolute;
+        bottom: -1px;
+        left: 0px;
+        border-bottom-left-radius: 16px;
+        margin: 0;
+        padding: 0;
+        border: none;
+        color: black;
+        background-color: #ffc73d;
+    }
+
+    #MWOArenaDuels div.control-group {
+        display: block;
+        height: 24px;
+    }
+
+    #MWOArenaDuels ul.action-list {
+        list-style-type: none;
+        height: 24px;
+        line-height: 16px;
+        width: 100%;
+        margin: auto;
+    }
+
+        #MWOArenaDuels ul.action-list li {
+            float: left;
+            display: inline-block;
+            height: 20px;
+            min-width: 24px;
+            max-width: 96px;
+            padding: 1px 2px;
         }
-        #duels-list div.duel{}
-        #MWOArenaDuels {width:100%}
-        #MWOArenaDuels ul { width: 100%;}
-        #MWOArenaDuels li { width: 100%;}
-        #MWOArenaDuels div.list-row {  width: 100%;border-bottom:solid 1px #000000}
-        #MWOArenaDuels li div {display: inline-block;margin-left: 2px;margin-right: 2px;}
-        label{ display: none;}
+
+    #MWOArenaDuels .action-list button {
+        background-color: #8B0000;
+        color: #ffc73d;
+    }
+
+    #MWOArenaDuels button {
+        border-bottom-left-radius: 12px;
+        border-top-right-radius: 12px;
+        color: black;
+        background-color: #ffc73d;
+        line-height: 14px;
+        font-family: 'Roboto', Arial;
+        text-align: center;
+        font-size: 1em;
+        border-color: #8B0000;
+    }
+
+#duels-results{ margin-top: 20px;}
+
+#duels-head {
+    background-color: #222222;
+    color: #ffc73d;
+    font-weight: bold;
+
+}
+
+#duels-list div.colhead {
+    background-color: #222222;
+    color: #ffc73d;
+    font-weight: bold;
+}
+
+div.listframe {
+    overflow-y: scroll;
+    overflow-x:hidden;
+    height: 180px;
+}
+
+#duels-list li {
+    background-color: #fffff0;
+    color: #222222;
+    width: 96%;
+}
+
+    #duels-list li:nth-child(odd) {
+        background-color: #ffc73d;
+        color: #222222;
+    }
+
+div.MatchGroupName {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.DivisionName {
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.ModeName {
+    width: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.WinnerName {
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.WinnerChassisName {
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.LoserName {
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.LoserChassisName {
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.Notes {
+    display: none;
+}
+
+.IsValid {
+    display: none;
+}

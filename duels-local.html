@@ -2,16 +2,17 @@
 <head>
     <title>MWO:Arena WebAPIs DuelUI Demo</title>
     <link href="Content/MWOArenaAPI.Duels.css" rel="stylesheet">
+    <link href="Content/bare/bare-mech.css" rel="stylesheet" />
     <style>
 
     </style>
 </head>
 <body>
-    <div id="MWOArenaDuels">
-        <button type="button" id="btnDuels-List">List</button>
-        <button type="button" id="btnDuels-Add" class="nav add"> + </button>
+    <fieldset id="MWOArenaDuels" class="container"><legend>MWO:Arena</legend>
+        <div class="container-title"><span class="api-title">Duels</span>:&nbsp;<span class="api-action">Add</span></div>
+ 
         <br/>
-        <div id="MWOArenaMsgBox"></div>
+        
         <form id="duel-form" class="interface formAddSingle">
             <div class="control-group">
                 <label>Division:</label> 
@@ -23,7 +24,7 @@
             </div>
             <div class="control-group">
                 <label>WinnerChassisName:</label> 
-                  <select  name="WinnerChassisName" id="WinnerChassisName" class="chassis-list winner"> </select>
+                <select  name="WinnerChassisName" id="WinnerChassisName" class="chassis-list winner"> </select>
             </div>
             <div class="control-group">
                 <label>LoserName:</label> 
@@ -31,17 +32,21 @@
             </div>
             <div class="control-group">
                 <label>LoserChassisName:</label> 
-                   <select  name="LoserChassisName" id="LoserChassisName" class="chassis-list loser"> </select>
+                <select  name="LoserChassisName" id="LoserChassisName" class="chassis-list loser"> </select>
             </div>
-         
+            <br/>
         
-            <button type="button" id="submit">Send</button>
-            <button type="reset" id="cancel">Cancel</button>
+            <button type="button" id="submitForm">Send</button>
+            <button type="reset" id="cancelForm">Cancel</button>
 
         </form>
+        <div id="MWOArenaMsgBox"></div>
         <input type="hidden" name="Build" value="0.4.0"/>
-    </div>
+        <div class="container-footer" ><ul class="action-list"><li><button type="button" id="btnDuels-Add" class="nav add"> + </button></li>
+                                           <li> <button type="button" id="btnDuels-List">List</button></li> 
+             </ul></div>
+    </fieldset>
     <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
 
-    <script type="text/javascript" src="Scripts/MWOArena.Duels.local.js"></script>
+    <script type="text/javascript" src="Scripts/MWOArena.Duels.local.js"></script> 
 </body>
