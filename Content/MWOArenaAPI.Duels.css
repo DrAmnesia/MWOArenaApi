@@ -4,9 +4,9 @@
 
 
 #MWOArenaDuels {
-    width: 100%;
+     width: 900px;
     position: relative;
-    min-height: 240px;
+    height: 720px;
     font-family: 'Roboto', Arial;
 }
 
@@ -127,12 +127,13 @@
     background-color: #222222;
     color: #ffc73d;
     font-weight: bold;
+    margin-right: 4px;
 }
 
 div.listframe {
     overflow-y: scroll;
     overflow-x:hidden;
-    height: 180px;
+    height: 640px;
 }
 
 #duels-list li {
@@ -145,6 +146,7 @@ div.listframe {
         background-color: #ffc73d;
         color: #222222;
     }
+.listrow div{margin-right: 4px;}
 
 div.MatchGroupName {
     width: 100px;
@@ -183,7 +185,7 @@ div.WinnerName {
 }
 
 div.WinnerChassisName {
-    width: 80px;
+    width: 100px;
     white-space: nowrap;
     overflow: hidden;
     -ms-text-overflow: ellipsis;
@@ -201,7 +203,7 @@ div.LoserName {
 }
 
 div.LoserChassisName {
-    width: 80px;
+    width: 100px;
     white-space: nowrap;
     overflow: hidden;
     -ms-text-overflow: ellipsis;
@@ -216,3 +218,69 @@ div.LoserChassisName {
 .IsValid {
     display: none;
 }
+
+
+#rankings-results{ margin-top: 20px;}
+
+#rankings-head {
+    background-color: #222222;
+    color: #ffc73d;
+    font-weight: bold;
+
+}
+
+#rankings-head div.colhead {
+    background-color: #222222;
+    color: #ffc73d;
+    font-weight: bold;
+    margin-right: 4px;
+}
+ 
+
+#rankings-list li {
+    background-color: #fffff0;
+    color: #222222;
+    width: 96%;
+}
+
+    #rankings-list li:nth-child(odd) {
+        background-color: #ffc73d;
+        color: #222222;
+    }
+ 
+div.pilot{
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.wins {
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+div.losses {
+    width: 60px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+div.wlRatio {
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+ 

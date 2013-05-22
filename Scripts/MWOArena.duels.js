@@ -61,7 +61,7 @@ $(document).ready(function () {
             listDuels: function () {
                 //create the match list scaffolding
                 if ($("#duels-list").length == 0) {
-
+                    $(".interface").hide();
                     $("#MWOArenaDuels .container-title").after("<div id='duels-results' class='interface'><ul id='duels-head'  ></ul></div>");
                     $("#duels-head").after("<div class='listframe'><ul id='duels-list'  ></ul></div>");
                     //  $("#MWOArenaDuels").append("<ul id='duels-list' class='interface list'></ul>");
@@ -100,6 +100,49 @@ $(document).ready(function () {
                     }
                 });
             },
+            /**
+          * Get a list of Duels (filtered by AuthorityName)
+          */
+            listRankings: function () {
+                //create the match list scaffolding
+                if ($("#rankings-list").length == 0) {
+                    $(".interface").hide();
+                    $("#MWOArenaDuels .container-title").after("<div id='rankings-results' class='interface'><ul id='rankings-head'  ></ul></div>");
+                    $("#rankings-head").after("<div class='listframe'><ul id='rankings-list'  ></ul></div>");
+                    //  $("#MWOArenarankings").append("<ul id='rankings-list' class='interface list'></ul>");
+                }
+                //clear the match list
+                $("#rankings-head").empty();
+                $("#rankings-list").empty();
+                // set the form action subtitle
+                $(".api-action").html("Rankings");
+                //clear any messages order errors
+                MWOArena.clearMsgBox();
+
+                $.ajax({
+                    url: "http://mwoarenaapi.azurewebsites.net/api/overallrankings",
+                    type: "GET",
+                    crossDomain: true,
+                    dataType: "json",
+                    contentType: "application/json",
+                    success: function (result) {
+                        $(".interface").hide();
+                        var html = '<div><div class="pilot colhead"> Pilot </div><div class="wins colhead"> Wins </div><div class="losses colhead"> losses </div><div class="wlRatio colhead"> Win Loss Ratio </div></div>';
+                        $("#rankings-head").append('<li class="colhead">' + html + '</li>');
+
+                        $.each(result, function () {
+                            html = '<div class="list-row ranking"><div class="pilot">' + this.username + '</div><div class="wins">' + this.wins + '</div><div class="losses">' + this.losses + '</div><div class="wlRatio">' + this.wlRatio + '</div></div>';
+                            $("#rankings-list").append('<li>' + html + '</li>');
+                        });
+
+                        $("#rankings-results").show();
+
+                    },
+                    error: function (jqXHR, tranStatus, errorThrown) {
+                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                    }
+                });
+            },
             fillPilotLists: function () {
                 $("#WinnerName").empty();
                 $("#LoserName").empty();
@@ -131,7 +174,7 @@ $(document).ready(function () {
                 $('#LoserChassisName').append($('<option>', { value: "" }).text(" LoserChassisName "));
 
                 $.ajax({
-                    url: "ttp://mwoarenaapi.azurewebsites.net/api/chassis",
+                    url: "http://mwoarenaapi.azurewebsites.net/api/chassis",
                     type: "GET",
                     crossDomain: true,
                     dataType: "json",
@@ -178,7 +221,8 @@ $(document).ready(function () {
         }
     };
 
-
+    $(".interface").hide();
+    MWOArena.Duels.listRankings();
     MWOArena.Duels.fillPilotLists();
     MWOArena.Duels.fillChassisLists();
     MWOArena.Duels.fillDivisionLists();
@@ -193,4 +237,5 @@ $(document).ready(function () {
         $(".api-action").html("Add");
     });
     $("#btnDuels-List").click(MWOArena.Duels.listDuels);
+    $("#btnRankings-List").click(MWOArena.Duels.listRankings);
 });

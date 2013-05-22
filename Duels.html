@@ -4,49 +4,57 @@
     <link href="Content/MWOArenaAPI.Duels.css" rel="stylesheet">
     <link href="Content/bare/bare-mech.css" rel="stylesheet" />
     <style>
-
     </style>
 </head>
 <body>
-    <fieldset id="MWOArenaDuels" class="container"><legend>MWO:Arena</legend>
+    <fieldset id="MWOArenaDuels" class="container">
+        <legend>MWO:Arena</legend>
         <div class="container-title"><span class="api-title">Duels</span>:&nbsp;<span class="api-action">Add</span></div>
- 
-        <br/>
-        
+
+        <br />
+
         <form id="duel-form" class="interface formAddSingle">
             <div class="control-group">
-                <label>Division:</label> 
-                <select name="DivisionName" id="DivisionName" class="division-list"> </select>
+                <label>Division:</label>
+                <select name="DivisionName" id="DivisionName" class="division-list"></select>
             </div>
             <div class="control-group">
-                <label>WinnerName:</label> 
-                <select name="WinnerName" id="WinnerName" class="pilot-list winner"> </select>
+                <label>WinnerName:</label>
+                <select name="WinnerName" id="WinnerName" class="pilot-list winner"></select>
             </div>
             <div class="control-group">
-                <label>WinnerChassisName:</label> 
-                <select  name="WinnerChassisName" id="WinnerChassisName" class="chassis-list winner"> </select>
+                <label>WinnerChassisName:</label>
+                <select name="WinnerChassisName" id="WinnerChassisName" class="chassis-list winner"></select>
             </div>
             <div class="control-group">
-                <label>LoserName:</label> 
-                <select  name="LoserName" id="LoserName" class="pilot-list loser"> </select>
+                <label>LoserName:</label>
+                <select name="LoserName" id="LoserName" class="pilot-list loser"></select>
             </div>
             <div class="control-group">
-                <label>LoserChassisName:</label> 
-                <select  name="LoserChassisName" id="LoserChassisName" class="chassis-list loser"> </select>
+                <label>LoserChassisName:</label>
+                <select name="LoserChassisName" id="LoserChassisName" class="chassis-list loser"></select>
             </div>
-            <br/>
-        
+            <br />
+
             <button type="button" id="submitForm">Send</button>
             <button type="reset" id="cancelForm">Cancel</button>
 
         </form>
         <div id="MWOArenaMsgBox"></div>
-        <input type="hidden" name="Build" value="0.4.0"/>
-        <div class="container-footer" ><ul class="action-list"><li><button type="button" id="btnDuels-Add" class="nav add"> + </button></li>
-                                           <li> <button type="button" id="btnDuels-List">List</button></li> 
-             </ul></div>
+        <input type="hidden" name="Build" value="0.4.0" />
+        <div class="container-footer">
+            <ul class="action-list">
+                <li>
+                    <button type="button" id="btnRankings-List">Rankings</button></li>
+                <li>
+                    <button type="button" id="btnDuels-List">List</button></li>
+                <li>
+                    <button type="button" id="btnDuels-Add" class="nav add">+ </button>
+                </li>
+            </ul>
+        </div>
     </fieldset>
     <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
 
-    <script type="text/javascript" src="Scripts/MWOArena.Duels.js"></script> 
+    <script type="text/javascript" src="Scripts/MWOArena.Duels.js"></script>
 </body>
