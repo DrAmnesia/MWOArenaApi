@@ -1,0 +1,1070 @@
+﻿body {
+    font-family: 'Roboto',arial sans-serif;
+    font-size: 1em;
+}
+
+
+
+
+
+    #dialog-link span.ui-icon {
+        margin: 0 5px 0 0;
+        position: absolute;
+        left: .2em;
+        top: 50%;
+        margin-top: -8px;
+    }
+
+#icons {
+    margin: 0;
+    padding: 0;
+}
+
+    #icons li {
+        margin: 2px;
+        position: relative;
+        padding: 4px 0;
+        cursor: pointer;
+        float: left;
+        list-style: none;
+    }
+
+    #icons span.ui-icon {
+        float: left;
+        margin: 0 4px;
+    }
+
+.truncate {
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+ 
+.matchup .match-result {
+    float: left;
+    top: 0;
+    width: 240px;
+}
+
+.pilot-mech-card {
+    width: 240px;
+    height: 190px;
+    margin: 0;
+    margin-right: 0;
+    padding: 0;
+    position: relative;
+    float: left;
+    transform: scale(.65,.65);
+    -ms-transform: scale(.65,.65); /* IE 9 */
+    -moz-transform: scale(.65,.65); /* Firefox */
+    -webkit-transform: scale(.65,.65); /* Safari and Chrome */
+    -o-transform: scale(.65,.65); /* Opera */
+}
+
+
+.match-list {
+    width: 1344px;
+    height: 220px;
+    overflow: hidden;
+}
+
+.match-box {
+    float: left;
+    -webkit-box-shadow: 0px 4px 6px #c93e02;
+    box-shadow: 0px 4px 6px #c93e02;
+}
+
+    .match-box .winloss {
+        height: 20px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1em;
+        top: 0px;
+        background-color: rgb(229,138,14);
+        background-color: rgba(229,138,14,.5);
+    }
+
+.pilot-mech-card2 {
+    float: left;
+    height: 200px;
+    top: 20px;
+    background-color: rgb(255,199,61);
+    background-color: rgba(255,199,61,.5);
+    -webkit-box-shadow: 0px 4px 6px #e58a0e;
+    box-shadow: 0px 4px 6px #e58a0e;
+}
+
+    .pilot-mech-card2:hover {
+        background-color: rgb(229,138,14);
+        background-color: rgba(229,138,14,.5);
+        -webkit-box-shadow: 0px 4px 8px #c93e02;
+        box-shadow: 0px 4px 8px #c93e02;
+    }
+
+    .pilot-mech-card2 > div.pilot-info-card {
+        display: none;
+    }
+
+    .pilot-mech-card2 > div.pilot-card {
+        display: block;
+    }
+
+    .pilot-mech-card2:hover > div.pilot-info-card {
+        display: block;
+    }
+
+    .pilot-mech-card2:hover > div.pilot-card {
+        display: none;
+    }
+
+    .pilot-mech-card2 > div.build-info-card {
+        display: none;
+    }
+
+    .pilot-mech-card2 > div.build-card {
+        display: block;
+    }
+
+    .pilot-mech-card2:hover > div.build-info-card {
+        display: block;
+    }
+
+    .pilot-mech-card2:hover > div.build-card {
+        display: none;
+    }
+
+.pilot-info-card {
+    margin: 0;
+    margin-right: 8px;
+    height: 180px;
+    width: 160px;
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    float: left;
+    border: solid 0px transparent;
+    color: #dddddd;
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.build-info-card {
+    margin: 0;
+    margin-right: 8px;
+    height: 180px;
+    width: 160px;
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    float: left;
+    border: solid 0px transparent;
+    color: #dddddd;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.info-pic {
+    height: 160px;
+    width: 140px;
+    display: block;
+    -webkit-box-shadow: 4px 4px 6px #000;
+    box-shadow: 4px 4px 6px #000;
+    border: solid 1px #c93e02;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    display: inline-block;
+    background-color: #000000;
+}
+
+.pilot-mech-card2 .info {
+    height: 154px;
+    width: 134px;
+    display: block;
+    border: none;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-block;
+}
+
+
+.pilot-mech-card2 .info-item {
+    margin: 0px;
+    padding: 0px;
+    padding-top: 1px;
+    border: none;
+    text-align: left;
+    height: 14px;
+    position: relative;
+}
+
+    .pilot-mech-card2 .info-item .detail {
+        font-size: 10px;
+        padding-top: 8px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4px;
+        font-weight: normal;
+        height: 140px;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .pilot-mech-card2 .info-item .hdr {
+        font-weight: bold;
+        height: 16px;
+        font-size: 12px;
+        text-align: center;
+        border-bottom: #dddddd solid 1px;
+        margin-bottom: 2px;
+    }
+
+
+.pilot-card {
+    margin: 0;
+    margin-right: 8px;
+    height: 180px;
+    width: 160px;
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    float: left;
+    border: solid 0px transparent;
+    color: #ffc73d;
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.pilot-pic {
+    height: 160px;
+    width: 140px;
+    display: block;
+    -webkit-box-shadow: 4px 4px 6px #000;
+    box-shadow: 4px 4px 6px #000;
+    border: solid 1px #c93e02;
+    color: #ffc73d;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    display: inline-block;
+}
+
+.pilot-card .pilot-nameplate {
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
+    height: 24px;
+    width: 128px;
+    position: absolute;
+    top: 148px;
+    left: 13px;
+    background: rgb(25, 25, 25);
+    background: rgba(25, 25, 25, .5);
+    border-bottom-right-radius: 16px;
+    text-align: center;
+}
+
+.build-card {
+    margin: 0;
+    margin-right: 8px;
+    height: 180px;
+    width: 160px;
+    position: relative;
+    opacity: 1;
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    float: left;
+    border: solid 0px transparent;
+    color: #ffc73d;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.mech-pic {
+    height: 160px;
+    width: 140px;
+    display: block;
+    -webkit-box-shadow: 4px 4px 6px #000;
+    box-shadow: 4px 4px 6px #000;
+    border: solid 1px #c93e02;
+    color: #ffc73d;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    display: inline-block;
+}
+
+.build-card .mech-nameplate {
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
+    height: 24px;
+    width: 128px;
+    position: absolute;
+    top: 148px;
+    left: 13px;
+    background: rgb(25, 25, 25);
+    background: rgba(25, 25, 25, .5);
+    border-bottom-left-radius: 16px;
+    text-align: center;
+}
+
+
+.build-card .mech-ChassisPlate {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
+    height: 20px;
+    width: 128px;
+    position: absolute;
+    top: 128px;
+    left: 13px;
+    background: rgb(25, 25, 25);
+    background: rgba(25, 25, 25, .5);
+    text-align: center;
+}
+
+div.active:hover .mech-chassisplate {
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
+    height: 20px;
+    width: 128px;
+    position: absolute;
+    top: 123px;
+    left: 8px;
+    background: rgb(25, 25, 25);
+    background: rgba(25, 25, 25, .5);
+    text-align: center;
+}
+
+.build-card:hover .mech-chassisplate {
+    top: 123px;
+    left: 8px;
+}
+
+.mech-slot {
+    margin: 0;
+    margin-right: 8px;
+    height: 180px;
+    width: 160px;
+    position: relative;
+    opacity: .9;
+    cursor: pointer;
+    background-color: #dddddd;
+    display: block;
+    -webkit-box-shadow: -2px -2px 6px #000 inset,-2px -2px 4px black;
+    box-shadow: -2px -2px 6px #000 inset,-2px -2px 4px black;
+    float: left;
+    border: solid 0px transparent;
+    color: #ffc73d;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+}
+
+.build-card:hover {
+    opacity: 1;
+    /* box-shadow: -4px -4px 8px #777 inset;*/
+    border: solid 0px transparent;
+}
+
+
+
+    .build-card:hover .mech-pic {
+        -webkit-box-shadow: 6px 6px 12px #000;
+        box-shadow: 6px 6px 12px #000;
+        top: 8px;
+        left: 8px;
+    }
+
+div.active:hover .mech-pic {
+    -webkit-box-shadow: 4px 4px 6px #000;
+    box-shadow: 4px 4px 6px #000;
+    top: 12px;
+    left: 12px;
+}
+
+
+div.active:hover .mech-nameplate {
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
+    height: 24px;
+    width: 128px;
+    position: absolute;
+    top: 148px;
+    left: 13px;
+    background: rgb(25, 25, 25);
+    background: rgba(25, 25, 25, .5);
+    border-bottom-left-radius: 16px;
+    text-align: center;
+}
+
+
+.build-card .mech-nameplate {
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border: none;
+    height: 24px;
+    width: 128px;
+    position: absolute;
+    top: 148px;
+    left: 13px;
+    background: rgb(25, 25, 25);
+    background: rgba(25, 25, 25, .5);
+    border-bottom-left-radius: 16px;
+    text-align: center;
+}
+
+.build-card:hover .mech-nameplate {
+    top: 143px;
+    left: 8px;
+}
+
+.build-card:active {
+    background-color: #c93e02;
+    opacity: 1;
+    -webkit-box-shadow: -4px -4px 8px #000 inset;
+    box-shadow: -4px -4px 8px #000 inset;
+    border: solid 0px transparent;
+}
+
+/*video screens */
+.display-monitor {
+    background-color: #444444;
+    border: 1px solid #C93E02;
+    border-bottom-left-radius: 16px;
+    border-top-right-radius: 16px;
+    -webkit-box-shadow: -4px -4px 32px #111111 inset;
+    box-shadow: -4px -4px 32px #111111 inset;
+    color: #FFC73D;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 378px;
+    margin: 0 8px 12px 0;
+    opacity: 1;
+    position: relative;
+    width: 90%;
+}
+
+.display-screen {
+    background-color: #444444;
+    border-bottom: 1px solid #404040;
+    border-bottom-left-radius: 16px;
+    border-right: 1px solid #404040;
+    border-top-right-radius: 16px;
+    overflow: hidden;
+    color: #44FF44;
+    display: inline-block;
+    height: 312px;
+    left: 10px;
+    padding: 4px;
+    position: absolute;
+    top: 10px;
+    width: 92%;
+}
+
+ 
+    #vidScreen1 .display-screen {
+        height: 208px;
+        width: 369px;
+    }
+
+.vid-title {
+    -webkit-text-shadow: 2px 2px 8px #666666;
+    text-shadow: 2px 2px 8px #666666;
+    bottom: 8px;
+    height: 24px;
+    width: 369px;
+    background-color: transparent;
+    overflow: hidden;
+    color: #acacac;
+    display: inline-block;
+    left: 10px;
+    padding: 4px;
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.valid-droppable {
+    background-color: #8fbc8f;
+}
+
+.invalid-droppable {
+    background-color: #c93e02;
+}
+
+.ui-draggable-dragging {
+    -webkit-box-shadow: 24px 24px 32px #f00;
+    box-shadow: 24px 24px 32px #f00;
+}
+
+.active {
+    z-index: 5000;
+}
+
+/*account management*/
+fieldset {
+
+}
+
+legend {
+    display: block;
+    top: 6px;
+    border: none;
+    margin: 0px;
+    margin-right: 6px;
+    color: black;
+    background-color: #ffc73d;
+    height: 20px;
+    width: 140px;
+    font-family: 'Roboto', 'sans-serif';
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button {
+    display: block;
+    position: relative;
+    float: right;
+    top: 6px;
+    border: none;
+    margin: 0px;
+    margin-right: 6px;
+    color: black;
+    background-color: #ffc73d;
+    height: 20px;
+    width: 60px;
+    font-family: 'Roboto', 'sans-serif';
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+    .button:hover {
+        background-color: #e58a0e;
+    }
+
+    .button a {
+        font-family: 'Roboto',arial sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+   color: black;
+    }
+
+
+fieldset {
+  
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    width: 260px;
+    font-family: 'Roboto',arial sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    border: solid 2px #FFC73D;
+    background-color: #ACACAC;
+    background: rgb(144, 144, 144);
+    background: rgba(144, 144, 144, .5);
+}
+
+    fieldset label {
+        width: 100px;
+        height: 24px;
+        background-color: #222222;
+        color: white;
+        padding: 0;
+        padding-left: 4px;
+        padding-right: 4px;
+        float: left;
+    }
+
+     
+
+    fieldset ol li {
+        display: block;
+        width: 100%;
+        height: 32px;
+    }
+
+    fieldset ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+    fieldset ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+
+    fieldset ul li select {
+        width: 140px;
+    }
+
+    fieldset ul li input[type="text"] {
+        width: 140px;
+    }
+
+    fieldset ul li input[type="password"] {
+        width: 140px;
+    }
+
+    fieldset ol li select {
+        width: 200px;
+    }
+
+    fieldset ol li input[type="text"] {
+        width: 200px;
+    }
+
+    fieldset ol li input[type="password"] {
+        width: 200px;
+    }
+
+    fieldset select {
+        background-color: #444444;
+        color: white;
+        float: left;
+    }
+
+    fieldset input[type="text"] {
+        background-color: #444444;
+        color: white;
+        float: left;
+        height: 24px;
+        padding: 0px;
+        margin: 0px;
+        border: none;
+    }
+
+    fieldset input[type="select"] {
+        background-color: #444444;
+        color: white;
+        float: left;
+        padding: 0px;
+        margin: 0px;
+        border: none;
+    }
+
+    fieldset input[type="password"] {
+        background-color: #444444;
+        color: white;
+        float: left;
+        height: 24px;
+        padding: 0px;
+        margin: 0px;
+        border: none;
+    }
+
+    fieldset input[type="checkbox"] {
+        width: 48px;
+        background-color: #444444;
+        color: white;
+        height: 24px;
+        float: left;
+        padding: 0px;
+        margin: 0px;
+        border: none;
+    }
+
+.mech-editor input[type="text"] {
+    background-color: #444444;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+.mech-editor textarea {
+    background-color: #444444;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+#smurfies .label {
+    font-size: small;
+}
+
+#smurfies {
+    color: #c93e02;
+    font-size: small;
+    color: black;
+}
+
+    #smurfies a:hover {
+        background-color: #e58a0e;
+        color: black;
+    }
+
+    #smurfies tr:nth-child(even) {
+        background: burlywood;
+    }
+
+    #smurfies tr:nth-child(odd) {
+        background: #444444;
+        color: #e58a0e;
+    }
+
+body {
+    font-family: 'Roboto', sans-serif, arial, sans-serif;
+    color: #c93e02;
+    margin: 50px;
+    background-color: #acacac;
+}
+
+.demoHeaders {
+    margin-top: 2em;
+}
+
+ 
+
+
+.fakewindowcontain .ui-widget-overlay {
+    position: absolute;
+}
+
+.showlayer {
+    display: block;
+}
+
+.hidelayer {
+    display: none;
+}
+
+.up {
+    height: 160px;
+    width: 140px;
+    display: none;
+}
+
+.down {
+    height: 160px;
+    width: 140px;
+    display: inline-block;
+    position: relative;
+}
+
+.container-mech {
+    height: 160px;
+    width: 140px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.Readonly Input {
+    border: none;
+    width: 160px;
+    padding: 0;
+    margin: 0;
+}
+
+    .Readonly Input[type="checkbox"] {
+        border: none;
+        width: 24px;
+        padding: 0;
+        margin: 0;
+    }
+
+.Readonly Label {
+    border: none;
+    width: 160px;
+    font-size: medium;
+    padding: 0;
+    margin: 0;
+}
+
+.Readonly .Notes {
+    font-size: smaller;
+    background-color: ivory;
+    font-style: italic;
+}
+
+.Readonly .Comments {
+    font-size: smaller;
+    background-color: transparent;
+}
+
+.Readonly .ItemName {
+    font-weight: bolder;
+    background-color: transparent;
+    width: 320px;
+    padding: 0;
+    margin: 0;
+}
+
+.Readonly .Formrow {
+    height: 20px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.mech-gallery {
+    display: inline;
+    visibility: visible;
+    overflow: hidden;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.btn-active {
+    cursor: pointer;
+}
+
+#smurfies a {
+    color: black;
+}
+
+.extBuild {
+    display: block;
+    position: relative;
+    float: left;
+    top: 6px;
+    border: none;
+    margin: 0px;
+    margin-right: 6px;
+    color: black;
+    background-color: #ffc73d;
+    height: 20px;
+    width: 180px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+    .extBuild:hover {
+        background-color: #e58a0e;
+    }
+
+.ftr a {
+    font-family: 'Roboto', sans-serif, arial, 'sans-serif';
+    font-size: 1em;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.up-right-over {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+    .up-right-over A {
+        font-family: 'Roboto', sans-serif, arial, 'sans-serif';
+        font-size: 1em;
+        color: #ffc73d;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        .up-right-over A:active {
+            color: #ffc73d;
+        }
+
+        .up-right-over A:hover {
+            color: #c93e02;
+        }
+
+        .up-right-over A:visited {
+            color: #ffc73d;
+        }
+
+#smurfies .btn {
+    display: none;
+}
+
+#smurfies UL {
+    display: none;
+}
+
+#smurfies td {
+    width: 180px;
+    padding-bottom: 8px;
+}
+
+.bad-mech {
+    height: 160px;
+    width: 140px;
+    display: block;
+    -webkit-box-shadow: 4px 4px 6px #000;
+    box-shadow: 4px 4px 6px #000;
+    border: solid 1px #c93e02;
+    color: #ffc73d;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    display: inline-block;
+}
+
+.build-card:hover .bad-mech {
+    -webkit-box-shadow: 6px 6px 12px #000;
+    box-shadow: 6px 6px 12px #000;
+    top: 8px;
+    left: 8px;
+}
+
+ 
+
+.mech-edit-active {
+    width: 328px;
+    -webkit-box-shadow: 16px 16px 24px #777;
+    box-shadow: 16px 16px 24px #777;
+}
+
+.close {
+    display: block;
+    position: relative;
+    float: right;
+    top: 6px;
+    border: none;
+    margin: 0px;
+    margin-right: 6px;
+    color: black;
+    background-color: #e58a0e;
+    height: 20px;
+    width: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 1em;
+}
+
+.save {
+    display: block;
+    position: relative;
+    float: right;
+    top: 6px;
+    border: none;
+    margin: 0px;
+    margin-right: 6px;
+    color: black;
+    background-color: #ffc73d;
+    height: 20px;
+    width: 60px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.mech-editor {
+    height: 280px;
+    width: 328px;
+    display: none;
+    -webkit-box-shadow: 4px 4px 6px #000;
+    box-shadow: 4px 4px 6px #000;
+    border: solid 1px #c93e02;
+    color: #ffc73d;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    display: inline-block;
+    background-color: black;
+    font-size: small;
+}
+
+    .mech-editor p {
+        font-size: smaller;
+    }
+
+    .mech-editor span {
+        height: 16px;
+        font-size: 12px;
+    }
+
+    .mech-editor input {
+        height: 16px;
+        font-size: 12px;
+    }
+
+
+    .event-table {
+        border:#ffc73d solid 1px;
+    }
+    .event-table td, .event-table th {
+        padding-left: 4px;
+        padding-right:4px
+    }
+
+    .event-table tr:nth-child(even) {
+        background: burlywood;
+        color:#444444;
+    }
+
+        .event-table tr:nth-child(even) a {
+       color:#444444;
+    }
+
+    .event-table tr:nth-child(odd) {
+        background: #444444;
+        color: #e58a0e;
+    }

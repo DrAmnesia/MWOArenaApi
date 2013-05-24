@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <head>
     <title>MWO:Arena WebAPIs DuelUI Demo</title>
-    <link href="Content/MWOArenaAPI.Duels.css" rel="stylesheet">
-    <link href="Content/bare/bare-mech.css" rel="stylesheet" />
+    <link href="Content/Themes/uiMedium/MWOArenaAPI.Duels.css" rel="stylesheet">
+    <link href="Content/Themes/bare/bare-mech.css" rel="stylesheet" />
     <style>
     </style>
 </head>
@@ -40,7 +40,7 @@
             <button type="reset" id="cancelForm">Cancel</button>
 
         </form>
-        <div id="MWOArenaMsgBox"></div>
+
         <input type="hidden" name="Build" value="0.4.0" />
         <div class="container-footer">
             <ul class="action-list">
@@ -55,6 +55,61 @@
         </div>
     </fieldset>
     <script type="text/javascript" src="Scripts/jquery-1.7.2.js"></script>
-
+    <script type="text/javascript" src="Scripts/jquery.tinysort.js"></script>
     <script type="text/javascript" src="Scripts/MWOArena.Duels.local.js"></script>
+    <!-- templates -->
+    <script type="text/html" id="tmpltDuelsHead">
+
+        <ul id="duels-head">
+            <li id="duels-thead" class="colhead">
+                <div class="colwrap" id="dlCol1">
+                    <div class="Id colhead" style="display: none"></div>
+                    <div class="DropDate colhead" style="display: none"></div>
+                    <div class="DivisionId colhead" style="display: none"></div>
+                </div>
+                <div class="colwrap" id="dlCol2">
+                    <div class="MatchGroupName colhead">Match Set </div>
+                </div>
+                <div class="colwrap" id="dlCol3">
+                    <div class="DivisionName colhead">Division </div>
+                    <div class="ModeName colhead">Mode </div>
+                </div>
+                <div class="colwrap" id="dlCol4">
+                    <div class="WinnerName colhead">Winner </div>
+                    <div class="WinnerChassisName colhead">Chassis </div>
+                </div>
+                <div class="colwrap" id="dlCol5">
+                    <div class="LoserName colhead">Loser </div>
+                    <div class="LoserChassisName colhead">Chassis </div>
+                </div>
+            </li>
+        </ul>
+        <div class='listframe'>
+            <ul id='duels-list'></ul>
+        </div>
+    </script>
+    <script type="text/html" id="tmpltDuelsList">
+        <li class="list-row">
+            <div class="colwrap">
+                <div class="Id list-item" style="display: none">~Id~</div>
+                <div class="DropDate list-item" style="display: none">~DropDate</div>
+                <div class="DivisionId list-item" style="display: none">~DivisionId~</div>
+                <input type="checkbox" name="IsValid" class="IsValid" value="~DuelPIdString~" /></div>
+            <div class="colwrap">
+                <div class="MatchGroupName list-item">~MatchGroupName~</div>
+            </div>
+            <div class="colwrap">
+                <div class="DivisionName list-item">~DivisionName~</div>
+                <div class="ModeName list-item">~ModeName~</div>
+            </div>
+            <div class="colwrap">
+                <div class="WinnerName list-item">~WinnerName~</div>
+                <div class="WinnerChassisName list-item">~WinnerChassisName~</div>
+            </div>
+            <div class="colwrap">
+                <div class="LoserName list-item">~LoserName~</div>
+                <div class="LoserChassisName list-item">~LoserChassisName~</div>
+            </div>
+        </li>
+    </script>
 </body>

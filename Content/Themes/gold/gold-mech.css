@@ -1,0 +1,93 @@
+﻿body {
+}
+
+          .build-card {
+        margin: 0;
+        margin-right: 8px;
+        height: 180px;
+        width: 160px;
+        position: relative;
+        opacity: 1;
+        cursor: pointer;
+        background-color: #ffc73d;
+        display: block;
+        box-shadow: -2px -2px 6px #777 inset,-2px -2px 4px black;
+        float: left;
+        border: solid 0px transparent;
+        color: #ffc73d;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+     .mech-slot {
+        margin: 0;
+        margin-right: 8px;
+        height: 180px;
+        width: 160px;
+        position: relative;
+        opacity: .9;
+        cursor: pointer;
+        background-color: #dddddd;
+        display: block;
+        box-shadow: -2px -2px 6px #777 inset 
+        float: left;
+        border: solid 0px transparent;
+        color: #ffc73d;
+        border-top-right-radius: 16px;
+        border-bottom-left-radius: 16px;
+    }
+        .build-card:hover {
+            opacity: 1;
+            box-shadow: -4px -4px 8px #777 inset;
+            border: solid 0px transparent;
+        }
+
+         .mech-pic {
+            height: 160px;
+            width: 140px;
+            display: block;
+            box-shadow: -4px -4px 6px #777;
+            border: solid 0px #777;
+            color: #ffc73d;
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            border-top-right-radius: 16px;
+            border-bottom-left-radius: 16px;display: inline-block;
+        }
+
+        .build-card:hover .mech-pic {
+            box-shadow: -2px -2px 4px #777;
+            top: 8px;
+            left: 8px;
+            border: solid 0px transparent;
+        }
+
+        .build-card .mech-nameplate {
+            font-weight: bold;
+            margin: 0px;
+            padding: 0px;
+            border: none;
+            height: 24px;
+            width: 140px;
+            position: absolute;
+            top: 147px;
+            left: 12px;
+            background: rgb(25, 25, 25);
+            background: rgba(25, 25, 25, .5);
+            border-bottom-left-radius: 16px;
+        }
+
+        .build-card:hover .mech-nameplate {
+            top: 143px;
+            left: 8px;
+        }
+
+        .build-card:active {
+            background-color: #c93e02;
+            opacity: 1;
+            box-shadow: -4px -4px 8px #777 inset;
+            border: solid 0px transparent;
+        }
+       .valid-droppable{ background-color: #8fbc8f;}
+     .invalid-droppable{ background-color: #c93e02;}
+     .ui-draggable-dragging{box-shadow:24px 24px 32px #000}

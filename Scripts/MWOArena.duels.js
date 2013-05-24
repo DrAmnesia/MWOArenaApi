@@ -15,12 +15,38 @@ $(document).ready(function () {
         /**
             *Clears the MWOArenaMsgBox Div
         */
-        clearMsgBox: function () {
+        createMsgBox: function () {
             if ($("#MWOArenaMsgBox").length == 0)
-                $("#MWOArenaDuels .interface").prepend("<div id='MWOArenaMsgBox'></div>");
-            $("#MWOArenaMsgBox").empty();
+                $("#MWOArenaDuels .interface").prepend("<div id='MWOArenaMsgBox' class='notification' style='display:none'><div class='msg-title'></div><div class='msg-body'></div><div>");
+            if ($("#MWOArenaMsgBox div.msg-title").length == 0)
+                $("#MWOArenaMsgBox").html("<div class='msg-title'></div><div class='msg-body'></div>");
         },
+        clearMsgBox: function (dur) {
+            if (dur == 0)
+                $("#MWOArenaMsgBox").hide();
+            else
+                $("#MWOArenaMsgBox").fadeOut(dur, function () {
+                    $("#MWOArenaMsgBox div.msg-title").empty();
+                    $("#MWOArenaMsgBox div.msg-body").empty();
+                });
 
+
+        },
+        setMsgBox: function (title, message) {
+            $("#MWOArenaMsgBox").show();
+            $("#MWOArenaMsgBox div.msg-title").html(title);
+            $("#MWOArenaMsgBox div.msg-body").html(message);
+
+        },
+        busyOn: function (m) {
+            var msel = "#" + m;
+            $(msel).show();
+
+        },
+        busyOff: function (m) {
+            var msel = "#" + m;
+            $(msel).fadeOut(2000);
+        },
 
         /**
              * MWOArena.Duels
@@ -42,15 +68,17 @@ $(document).ready(function () {
                     data: formData,
                     dataType: "html",
                     success: function (result) {
-                        MWOArena.clearMsgBox();
+                        MWOArena.clearMsgBox(0);
                         // $('#duel-form').html(result);
                         $(".interface").hide();
-                        $("#MWOArenaMsgBox").html("<b><i>Duel Added</i></b>");
+                        MWOArena.setMsgBox("Success", "Your Duel has been added.");
                         $("#duel-form")[0].reset();
                         $("#duel-form").show();
+                        MWOArena.clearMsgBox(2000);
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
                         $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from adding duels at this time");
                     }
                 });
             },
@@ -59,20 +87,22 @@ $(document).ready(function () {
             * Get a list of Duels (filtered by AuthorityName)
 			*/
             listDuels: function () {
-                //create the match list scaffolding
-                if ($("#duels-list").length == 0) {
-                    $(".interface").hide();
-                    $("#MWOArenaDuels .container-title").after("<div id='duels-results' class='interface'><ul id='duels-head'  ></ul></div>");
-                    $("#duels-head").after("<div class='listframe'><ul id='duels-list'  ></ul></div>");
-                    //  $("#MWOArenaDuels").append("<ul id='duels-list' class='interface list'></ul>");
+                $(".interface").hide();
+
+                if ($("#duels-results").length == 0) {
+                    MWOArena.busyOn("MWOArenabusy");
+                    $("#MWOArenaDuels .container-title").after('<div id="duels-results" class="interface"></div>');
                 }
-                //clear the match list
-                $("#duels-head").empty();
-                $("#duels-list").empty();
+                $("#duels-results").empty();
+                //clear and reload the match list
+                var tmpltduelsHead = document.getElementById("tmpltDuelsHead").innerHTML;
+                var tmpltduelsList = document.getElementById("tmpltDuelsList").innerHTML;
+                $("#duels-results").append(tmpltduelsHead);
+
                 // set the form action subtitle
-                $(".api-action").html("List");
+                $(".api-action").html("Results");
                 //clear any messages order errors
-                MWOArena.clearMsgBox();
+                MWOArena.clearMsgBox(0);
 
                 $.ajax({
                     url: "http://mwoarenaapi.azurewebsites.net/api/duels",
@@ -81,43 +111,55 @@ $(document).ready(function () {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
-                        $("#duels-results").hide();
-
-                        var html = '<div><div class="MatchGroupName colhead"> Match Set </div><div class="DivisionName colhead"> Division </div><div class="ModeName colhead"> Mode </div><div class="WinnerName colhead"> Winner </div><div class="WinnerChassisName colhead"> Chassis </div><div class="LoserName colhead"> Loser </div><div class="LoserChassisName colhead"> Chassis </div> </div>';
-                        $("#duels-head").append('<li class="colhead">' + html + '</li>');
-
                         $.each(result, function () {
                             var validated = (this.IsValid == true ? ' checked="checked "' : '');
-                            html = '<div class="list-row duel"><div class="MatchGroupName">' + this.MatchGroupName + '</div><div class="DivisionName">' + this.DivisionName + '</div><div class="ModeName">' + this.ModeName + '</div><div class="WinnerName">' + this.WinnerName + '</div><div class="WinnerChassisName">' + this.WinnerChassisName + '</div><div class="LoserName">' + this.LoserName + '</div><div class="LoserChassisName">' + this.LoserChassisName + '</div> <input type="checkbox" name="IsValid" class="IsValid" value="' + this.DuelPId.toString() + '" ' + validated + '/></div>';
-                            $("#duels-list").append('<li>' + html + '</li>');
+                            var duelsListHtml = tmpltduelsList;
+                            duelsListHtml = duelsListHtml.replace('~DuelPIdString~', this.DuelPId.toString());
+                            duelsListHtml = duelsListHtml.replace('~Id~', this.Id);
+                            duelsListHtml = duelsListHtml.replace('~DropDate~', this.DropDate);
+                            duelsListHtml = duelsListHtml.replace('~DivisionId~', this.DivisionId);
+                            duelsListHtml = duelsListHtml.replace('~MatchGroupName~', this.MatchGroupName);
+                            duelsListHtml = duelsListHtml.replace('~DivisionName~', this.DivisionName);
+                            duelsListHtml = duelsListHtml.replace('~ModeName~', this.ModeName);
+                            duelsListHtml = duelsListHtml.replace('~WinnerName~', this.WinnerName);
+                            duelsListHtml = duelsListHtml.replace('~WinnerChassisName~', this.WinnerChassisName);
+                            duelsListHtml = duelsListHtml.replace('~LoserName~', this.LoserName);
+                            duelsListHtml = duelsListHtml.replace('~LoserChassisName~', this.LoserChassisName);
+                            if (this.IsValid == true) {
+                                duelsListHtml.replace('<input type="checkbox" name="IsValid"', '<input type="checkbox" name="IsValid" ' + validated + ' ');
+                            }
+                            $("#duels-list").append(duelsListHtml);
                         });
-                        $(".interface").hide();
                         $("#duels-results").show();
-
+                        MWOArena.busyOff("MWOArenabusy");
+                        $(".colhead").click(MWOArena.Duels.sortListTable);
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from retreiving duel results at this time");
                     }
                 });
             },
+
             /**
           * Get a list of Duels (filtered by AuthorityName)
           */
             listRankings: function () {
+                $(".interface").hide();
+
                 //create the match list scaffolding
-                if ($("#rankings-list").length == 0) {
+                if ($("#rankings-results").length == 0) {
                     $(".interface").hide();
-                    $("#MWOArenaDuels .container-title").after("<div id='rankings-results' class='interface'><ul id='rankings-head'  ></ul></div>");
-                    $("#rankings-head").after("<div class='listframe'><ul id='rankings-list'  ></ul></div>");
-                    //  $("#MWOArenarankings").append("<ul id='rankings-list' class='interface list'></ul>");
+                    MWOArena.busyOn("MWOArenabusy");
+                    $("#MWOArenaDuels .container-title").after("<div id='rankings-results' class='interface'><ul id='rankings-head'  ></ul><div class='listframe'><ul id='rankings-list'  ></ul></div></div>");
                 }
+
                 //clear the match list
                 $("#rankings-head").empty();
                 $("#rankings-list").empty();
                 // set the form action subtitle
                 $(".api-action").html("Rankings");
                 //clear any messages order errors
-                MWOArena.clearMsgBox();
+                MWOArena.clearMsgBox(0);
 
                 $.ajax({
                     url: "http://mwoarenaapi.azurewebsites.net/api/overallrankings",
@@ -126,22 +168,39 @@ $(document).ready(function () {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
-                        $(".interface").hide();
-                        var html = '<div><div class="pilot colhead"> Pilot </div><div class="wins colhead"> Wins </div><div class="losses colhead"> losses </div><div class="wlRatio colhead"> Win Loss Ratio </div></div>';
-                        $("#rankings-head").append('<li class="colhead">' + html + '</li>');
+                        var html = '<div><div class="pilot colhead" data-sortdir="">pilot</div><div class="wins colhead"> Wins </div><div class="losses colhead"> losses </div><div class="wlRatio colhead"> Win Loss Ratio </div></div>';
+                        $("#rankings-head").append('<li class="thead colhead">' + html + '</li>');
 
                         $.each(result, function () {
                             html = '<div class="list-row ranking"><div class="pilot">' + this.username + '</div><div class="wins">' + this.wins + '</div><div class="losses">' + this.losses + '</div><div class="wlRatio">' + this.wlRatio + '</div></div>';
                             $("#rankings-list").append('<li>' + html + '</li>');
                         });
-
+                        MWOArena.busyOff("MWOArenabusy");
                         $("#rankings-results").show();
 
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from retreiving rankings at this time");
                     }
                 });
+            },
+            sortListTable: function (event) {
+                var elem = $(event.target);
+                var nc = (elem.hasClass("asc")) ? "desc" : (elem.hasClass("desc")) ? "colhead" : "asc";
+                var tid = elem.closest('ul').attr('id');
+                var liid = elem.closest('li').attr("id");
+                $('#' + liid + ' div.colhead').removeClass("asc").removeClass("desc");
+                elem.addClass(nc);
+                var colidx = $('#' + liid + ' .colhead').index(elem);
+                //var pcolidx = $('#' + liid + '>div.colwrap').index(parent);
+                if (elem.hasClass("desc")) {
+                    $('#' + tid.replace("head", "list") + '>li').tsort(".list-item:eq(" + colidx.toString() + ")", { order: 'desc' });
+                } else if (elem.hasClass("asc")) {
+                    $('#' + tid.replace("head", "list") + '>li').tsort(".list-item:eq(" + colidx.toString() + ")");
+                } else {
+                    $('#' + tid.replace("head", "list") + '>li').tsort(".list-item:eq(1)", { order: 'desc' }, ".list-item:eq(2)", { order: 'desc' }, ".list-item:eq(6)", { order: 'desc' });
+                }
+                return false;
             },
             fillPilotLists: function () {
                 $("#WinnerName").empty();
@@ -163,7 +222,7 @@ $(document).ready(function () {
 
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from retreiving pilot lists at this time");
                     }
                 });
             },
@@ -187,7 +246,7 @@ $(document).ready(function () {
                         });
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from retreiving chassis lists at this time");
                     }
                 });
             }
@@ -211,7 +270,7 @@ $(document).ready(function () {
 
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
+                        MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from retreiving division lists at this time");
                     }
                 });
             }
@@ -221,14 +280,33 @@ $(document).ready(function () {
         }
     };
 
+
+    $("#MWOArenaDuels").append('<div id="MWOArenabusy" class="busy-list notification"><div class="msg-title">Fetching data... Hey did you know:</div>' +
+    '<div class="busy-item">Yeah, my other mech is a POS too... <br> - Anonymous HBK-4J Pilot</div>' +
+    '<div class="busy-item">*NEW*: Hero COM-2d with Fleshtone Camo!<br>They call him The Streak...</div>' +
+    '<div class="busy-item">Summer 2050: Kellog Corp serves cease and desist to all "Pop Tart" pilots.</div>' +
+    '<div class="busy-item">Tip: AltF4 to raise the new LRM Umbrella.</div>' +
+    '<div class="busy-item">Tortuga Prime: CN9-A voted "Most Rock-a-Billy Mech"...</div>' +
+    '<div class="busy-item">"I never overheat! My mech has Narcolepsy" <br>- Anonymous headstone on Tortuga Prime</div>' +
+    '<div class="busy-item">"Small lazer hunchback wolfpack? sure. What could go wrong? <br>- Anonymous headstone on Turtle Bay"</div>' +
+    '<div class="busy-item">"Love your Awesome Buckaneer camo, pimp that Wide Load trampstamp!" <br>- Mercenary flirting</div>' +
+    '<div class="busy-item">Urbie v.s. Dalek. Tortuga Prime OAB opens in 3... 2... 1...</div>' +
+    '<div class="busy-item">"Gauss Spider in Echo-4"... <br>"Roger that.. Wait... WTF?!?!" - Renkord ' +
+        '</div>');
+
+    $("#MWOArenabusy div.busy-item").tsort({ order: 'rand' });
+
     $(".interface").hide();
+    MWOArena.busyOn("MWOArenabusy");
+    MWOArena.createMsgBox();
     MWOArena.Duels.listRankings();
     MWOArena.Duels.fillPilotLists();
     MWOArena.Duels.fillChassisLists();
     MWOArena.Duels.fillDivisionLists();
-    MWOArena.clearMsgBox();
+    MWOArena.clearMsgBox(0);
     $("#submitForm").click(MWOArena.Duels.addDuel);
     $("#btnDuels-Add").click(function () {
+        MWOArena.clearMsgBox(0);
         // clear the container
         $(".interface").hide();
         // show the form
@@ -238,4 +316,6 @@ $(document).ready(function () {
     });
     $("#btnDuels-List").click(MWOArena.Duels.listDuels);
     $("#btnRankings-List").click(MWOArena.Duels.listRankings);
+
+    $("div.colhead").click(MWOArena.Duels.sortListTable);
 });
