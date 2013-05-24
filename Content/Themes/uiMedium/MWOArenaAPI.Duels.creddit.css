@@ -1,4 +1,6 @@
 ﻿body {
+    background-color: #ffffff !important;
+    color: #ffffff !important;
 }
 
 
@@ -6,19 +8,33 @@
 #MWOArenaDuels {
     width: 600px;
     position: relative;
-    height: 320px;
+    height: 326px;
     font-family: 'Roboto', Arial;
+    border: 2px solid #444444;
 }
+
+    #MWOArenaDuels button {
+        color: #ffffff;
+        font-weight: bold;
+        border-bottom-left-radius: 12px;
+        border-top-right-radius: 12px;
+        line-height: 14px;
+        font-family: 'Roboto', Arial;
+        text-align: center;
+        background-color: #f15a24;
+    }
 
     #MWOArenaDuels legend {
         position: absolute;
         top: -10px;
         right: 8px;
+        background-color: #29abe2;
+        color: #ffffff;
+        font-family: 'Roboto', Arial;
+        border: 2px solid #444444;
     }
 
     #MWOArenaDuels button.add {
-        font-size: large;
-        font-weight: bold;
     }
 
     #MWOArenaDuels ul {
@@ -31,7 +47,7 @@
 
     #MWOArenaDuels div.list-row {
         width: 100%;
-        border-bottom: solid 1px #000000;
+        border-bottom: solid 1px #444444;
     }
 
     #MWOArenaDuels li div {
@@ -39,7 +55,7 @@
         margin-left: 2px;
         margin-right: 2px;
     }
-  
+
     #MWOArenaDuels label {
         display: none;
     }
@@ -51,10 +67,10 @@
         display: block;
         border: none;
         margin: 0px;
-        color: black;
-        background-color: #ffc73d;
+        color: #ffffff;
+        background-color: #444444;
         line-height: 14px;
-        font-family: 'Roboto', 'sans-serif';
+        font-family: 'Roboto', arial;
         text-align: center;
         padding: 2px 8px;
         font-size: 1em;
@@ -62,17 +78,19 @@
     }
 
     #MWOArenaDuels div.container-footer {
-        height: 24px;
+        height: 30px;
         width: 100%;
         position: absolute;
         bottom: -1px;
-        left: 0px;
+        left: -2px;
         border-bottom-left-radius: 16px;
         margin: 0;
-        padding: 0;
+        padding: 0px;
+        padding-top: 4px;
+        padding-left: 4px;
         border: none;
         color: black;
-        background-color: #ffc73d;
+        background-color: #444444;
     }
 
     #MWOArenaDuels div.control-group {
@@ -90,58 +108,55 @@
 
         #MWOArenaDuels ul.action-list li {
             float: left;
-            display: inline-block;
-            height: 20px;
-            min-width: 24px;
+            display: inline;
             max-width: 96px;
             padding: 1px 2px;
         }
 
     #MWOArenaDuels .action-list button {
-        background-color: #8B0000;
-        color: #ffc73d;
+        background-color: #29abe2;
     }
 
-    #MWOArenaDuels button {
-        border-bottom-left-radius: 12px;
-        border-top-right-radius: 12px;
-        color: black;
-        background-color: #ffc73d;
-        line-height: 14px;
-        font-family: 'Roboto', Arial;
-        text-align: center;
-        font-size: 1em;
-        border-color: #8B0000;
-    }
+        #MWOArenaDuels .action-list button.add {
+            font-size: large;
+        }
+
+ 
 
 #MWOArenaDuels .notification {
     width: 320px;
     height: 72px;
     white-space: nowrap;
     background-color: #444444;
-    border: 1px solid #8b0000;
+    border: 1px solid #444444;
     position: absolute;
     z-index: 1000;
     top: 40%;
     left: 20%;
-    overflow: hidden;
+    overflow: hidden;        
+    border-top-right-radius: 12px;
+        border-bottom-left-radius: 12px;
 }
 
     #MWOArenaDuels  .notification  .msg-body {
-        height: 40px;
-        color: #ffc73d;
+        height: 44px;
+        color: #ffffff;
         margin: 4px;
         line-height: 14px;
         white-space: normal;
+     background-color: #444444;
     }
 
     #MWOArenaDuels  .notification  .msg-title {
         height: 20px;
-        color: #8b0000;
-        background-color: #ffc73d;
+        color: #ffffff;
+        background-color: #29abe2;
         margin: 4px;
+        padding-left: 4px;
         line-height: 16px;
         white-space: normal;
+ 
+        border-top-right-radius: 12px;
     }
 
  #MWOArenabusy {
@@ -149,7 +164,7 @@
     height: 72px;
     white-space: nowrap;
     background-color: #444444;
-    border: 1px solid #8b0000;
+    border: 1px solid #444444;
     position: absolute;
     z-index: 1000;
     top: 40%;
@@ -157,18 +172,18 @@
     overflow: hidden;
 }
 
-    #MWOArenabusy div.busy-item {
-        height: 40px;
-        color: #ffc73d;
-        margin: 4px;
-        line-height: 14px;
-        white-space: normal;
-    }
+#MWOArenabusy div.busy-item {
+  color: #ffffff;
+  height: 44px;
+  line-height: 14px;
+  margin: 4px;
+  white-space: normal;
+}
 
     #MWOArenabusy div.title {
         height: 20px;
-        color: #8b0000;
-        background-color: #ffc73d;
+        color: #ffffff;
+        background-color: #29abe2;
         margin: 4px;
         line-height: 16px;
         white-space: normal;
@@ -176,37 +191,40 @@
 
 
 .colhead {
-    background-color: #222222;
-    color: #ffc73d;
     font-weight: bold;
     margin-right: 4px;
     cursor: pointer;
     padding-top: 2px;
     padding-bottom: 2px;
-   }
+}
 
 #duels-results {
     margin-top: 20px;
 }
+
     #duels-results div.listframe {
-    height: 242px;
+        height: 242px;
     }
+
     #duels-results li div.colwrap {
         display: inline-block;
         margin-left: 2px;
         margin-right: 2px;
         height: 30px;
     }
-        #duels-results li div.colwrap div{
-        display: block;
-    }
+
+        #duels-results li div.colwrap div {
+            display: block;
+        }
+
 #duels-head {
-    background-color: #222222;
-    color: #ffc73d;
+    background-color: #444444;
+    color: #ffffff;
     font-weight: bold;
 }
- #duels-thead {
-        height: 38px;
+
+#duels-thead {
+    height: 38px;
 }
 
 div.desc {
@@ -230,22 +248,22 @@ div.listframe {
 }
 
 #duels-list li {
-    background-color: #fffff0;
-    color: #222222;
+    background-color: #29abe2;
+    color: #ffffff;
     width: 100%;
     height: 32px;
 }
 
     #duels-list li:nth-child(odd) {
-        background-color: #ffc73d;
-        color: #222222;
+        background-color: #f15a24;
+        color: #ffffff;
     }
 
 
 .listrow div.colwrap {
     margin-right: 4px;
 }
- 
+
 
 div.MatchGroupName {
     width: 100px;
@@ -324,21 +342,21 @@ div.LoserChassisName {
 }
 
 #rankings-head {
-    background-color: #222222;
-    color: #ffc73d;
+    background-color: #444444;
+    color: #ffffff;
     font-weight: bold;
 }
- 
+
 
 #rankings-list li {
-    background-color: #fffff0;
-    color: #222222;
-    width: 96%;
+    background-color: #29abe2;
+    color: #ffffff;
+    width: 100%;
 }
 
     #rankings-list li:nth-child(odd) {
-        background-color: #ffc73d;
-        color: #222222;
+        background-color: #f15a24;
+        color: #ffffff;
     }
 
 div.pilot {

@@ -45,7 +45,7 @@ $(document).ready(function () {
         },
         busyOff: function (m) {
             var msel = "#" + m;
-            $(msel).fadeOut(2000);
+            $(msel).fadeOut(3000);
         },
 
         /**
@@ -77,7 +77,6 @@ $(document).ready(function () {
                         MWOArena.clearMsgBox(2000);
                     },
                     error: function (jqXHR, tranStatus, errorThrown) {
-                        $('#MWOArenaMsgBox').html("<h3>POST Error!</h3>Browser may not support <a href='http://en.wikipedia.org/wiki/Cross-origin_resource_sharing#Browser_support'>Cross Origin Resource Sharing</a> ");
                         MWOArena.setMsgBox("POST Error!", "Connection issues are preventing us from adding duels at this time");
                     }
                 });
@@ -168,7 +167,7 @@ $(document).ready(function () {
                     dataType: "json",
                     contentType: "application/json",
                     success: function (result) {
-                        var html = '<div><div class="pilot colhead" data-sortdir="">pilot</div><div class="wins colhead"> Wins </div><div class="losses colhead"> losses </div><div class="wlRatio colhead"> Win Loss Ratio </div></div>';
+                        var html = '<div><div class="pilot colhead" data-sortdir="">Pilot</div><div class="wins colhead"> Wins </div><div class="losses colhead"> Losses </div><div class="wlRatio colhead"> Win Loss Ratio </div></div>';
                         $("#rankings-head").append('<li class="thead colhead">' + html + '</li>');
 
                         $.each(result, function () {
@@ -281,7 +280,7 @@ $(document).ready(function () {
     };
 
 
-    $("#MWOArenaDuels").append('<div id="MWOArenabusy" class="busy-list notification"><div class="msg-title">Fetching data... Hey did you know:</div>' +
+    $("#MWOArenaDuels").append('<div id="MWOArenabusy" class="busy-list notification"><div class="msg-title">Fetching data... Hey did you know:</div><div class="msg-body">' +
     '<div class="busy-item">Yeah, my other mech is a POS too... <br> - Anonymous HBK-4J Pilot</div>' +
     '<div class="busy-item">*NEW*: Hero COM-2d with Fleshtone Camo!<br>They call him The Streak...</div>' +
     '<div class="busy-item">Summer 2050: Kellog Corp serves cease and desist to all "Pop Tart" pilots.</div>' +
@@ -291,10 +290,9 @@ $(document).ready(function () {
     '<div class="busy-item">"Small lazer hunchback wolfpack? sure. What could go wrong? <br>- Anonymous headstone on Turtle Bay"</div>' +
     '<div class="busy-item">"Love your Awesome Buckaneer camo, pimp that Wide Load trampstamp!" <br>- Mercenary flirting</div>' +
     '<div class="busy-item">Urbie v.s. Dalek. Tortuga Prime OAB opens in 3... 2... 1...</div>' +
-    '<div class="busy-item">"Gauss Spider in Echo-4"... <br>"Roger that.. Wait... WTF?!?!" - Renkord ' +
-        '</div>');
+    '<div class="busy-item">"Gauss Spider in Echo-4"... <br>"Roger that.. Wait... WTF?!?!" - Renkord </div></div></div>');
 
-    $("#MWOArenabusy div.busy-item").tsort({ order: 'rand' });
+    $("#MWOArenabusy div.msg-body div.busy-item").tsort({ order: 'rand' });
 
     $(".interface").hide();
     MWOArena.busyOn("MWOArenabusy");
